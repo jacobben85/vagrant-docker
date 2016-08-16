@@ -12,8 +12,8 @@ Vagrant.configure("2") do |config|
 
   config.vm.network "private_network", ip: "192.168.56.102"
   
-  port1 = 9200
-  port2 = 9300
+  port1 = 8080
+  port2 = 9200
 
   config.vm.network(:forwarded_port, guest: port1, host: port1)
   config.vm.network(:forwarded_port, guest: port2, host: port2)
@@ -23,6 +23,6 @@ Vagrant.configure("2") do |config|
   config.vm.provision :docker_compose, 
 	yml: ["/vagrant/docker-compose.yml"], 
 	rebuild: true, 
-	project_name: "elasticsearch", 
+	project_name: "spring-boot-es", 
 	run: "always"
 end

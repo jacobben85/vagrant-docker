@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Search</title>
+    <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.6/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/3.3.6/css/bootstrap.min.css}" rel="stylesheet" media="screen" />
+</head>
+<body ng-app="search">
+
+    <div th:include="navigation" />
+
+    <div class="container-fluid" ng-controller="searchResults">
+        <h3><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search</h3>
+        <table class="table">
+            <thead>
+            <tr>
+                <td colspan="4"><input type="search" class="form-control" ng-model="searchKey" placeholder="Search..." ng-change="search()" /></td>
+            </tr>
+            <tr ng-show="events.length">
+                <th>Id</th>
+                <th>Name</th>
+                <th>Description</th>
+            </tr>
+            </thead>
+            <tr ng-repeat="event in events">
+                <td ng-class-odd="'odd'">{{ event.id }}</td>
+                <td ng-class-odd="'odd'">{{ event.name }}</td>
+                <td ng-class-odd="'odd'">{{ event.description }}</td>
+            </tr>
+        </table>
+    </div>
+
+    <script src="http://cdn.jsdelivr.net/webjars/angularjs/1.3.8/angular.min.js"
+            th:src="@{/webjars/angularjs/1.3.8/angular.min.js}"></script>
+    <script type="text/javascript" src="/js/search.js"
+            th:src="@{/js/search.js}"></script>
+</body>
+</html>

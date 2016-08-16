@@ -4,3 +4,8 @@ elasticsearch:
   ports:
     - "9200:9200"
     - "9300:9300"
+    
+spring-boot:
+  build: ./springboot
+  ports:
+    - "8080:8080"

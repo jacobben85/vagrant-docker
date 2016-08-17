@@ -18,11 +18,11 @@ Vagrant.configure("2") do |config|
   config.vm.network(:forwarded_port, guest: port1, host: port1)
   config.vm.network(:forwarded_port, guest: port2, host: port2)
 
-  config.vm.provision :shell, inline: "apt-get update"
+#  config.vm.provision :shell, inline: "apt-get update"
   config.vm.provision :docker
   config.vm.provision :docker_compose, 
 	yml: ["/vagrant/docker-compose.yml"], 
 	rebuild: true, 
-	project_name: "spring-boot-es", 
+	project_name: "jacob_infa", 
 	run: "always"
 end

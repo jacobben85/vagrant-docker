@@ -10,4 +10,4 @@ spring-boot:
   environment:
     config.eshost: 192.168.56.102
   ports: 
-    - "8080:8080"
+    - "8080:80"

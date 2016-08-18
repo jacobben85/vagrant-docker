@@ -16,11 +16,10 @@ Vagrant.configure("2") do |config|
     v.cpus = 2
   end
   
-  port1 = 8080
+  port1 = 80
   port2 = 9200
-  port3 = 80
 
-  config.vm.network(:forwarded_port, guest: port1, host: port3)
+  config.vm.network(:forwarded_port, guest: port1, host: port1)
   config.vm.network(:forwarded_port, guest: port2, host: port2)
 
 #  config.vm.provision :shell, inline: "apt-get update"

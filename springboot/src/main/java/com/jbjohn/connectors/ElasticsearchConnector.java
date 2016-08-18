@@ -6,8 +6,10 @@ import org.elasticsearch.common.settings.Settings;
 import org.elasticsearch.common.transport.InetSocketTransportAddress;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import com.jbjohn.properties.Configurations;
 
 import java.net.InetAddress;
+import org.springframework.stereotype.Component;
 
 /**
  * Client class for connecting to Elasticsearch prior to Dari support.
@@ -15,18 +17,27 @@ import java.net.InetAddress;
 public final class ElasticsearchConnector {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ElasticsearchConnector.class);
-
+    
+    private Configurations config;
+    
+    public ElasticsearchConnector(Configurations conf){
+        config = conf;
+    }
+    
     /**
      * Create a Lazy Client so it is only loaded when the get method is used.
      * By making this variable static and final it will only be loaded once per JVM session.
      */
     public Client create() throws Exception {
         // Pull values from the Tomcat Context XML.
-        String cluster = "elasticsearch";
-        String server = "192.168.56.102";
-        Integer port = 9300;
+        String cluster = config.getEscluster();
+        String server = config.getEshost();
+        Integer port = config.getEsport();
         String timeout = null;
         Boolean enableCompression = false;
+        LOGGER.info("cluster :" + cluster);
+        LOGGER.info("host :" + server);
+        LOGGER.info("port :" + Integer.toString(port));
 
         // default timeout to 5 seconds
         if (timeout == null) {

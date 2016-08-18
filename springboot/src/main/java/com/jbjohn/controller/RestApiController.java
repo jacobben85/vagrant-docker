@@ -1,11 +1,9 @@
 package com.jbjohn.controller;
 
 import com.jbjohn.connectors.ElasticsearchConnector;
-import org.elasticsearch.action.get.GetResponse;
 import org.elasticsearch.action.index.IndexRequest;
 import org.elasticsearch.action.update.UpdateRequest;
 import org.elasticsearch.action.update.UpdateResponse;
-import org.elasticsearch.common.collect.HppcMaps;
 import org.elasticsearch.search.SearchHit;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.jbjohn.connectors.ElasticsearchWrapper;
+import com.jbjohn.properties.Configurations;
 import org.elasticsearch.client.Client;
 
 import java.io.IOException;
@@ -22,10 +21,10 @@ import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
 import org.elasticsearch.action.search.SearchResponse;
-import org.elasticsearch.action.search.SearchType;
 import org.elasticsearch.index.query.QueryBuilders;
 
 import static org.elasticsearch.common.xcontent.XContentFactory.jsonBuilder;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  */
@@ -35,6 +34,9 @@ public class RestApiController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ElasticsearchConnector.class);
 
+    @Autowired
+    private Configurations config;
+    
     @RequestMapping("")
     public Map<String, Object> home() {
 
@@ -56,7 +58,7 @@ public class RestApiController {
         responseMap.put("count", 0);
 
         if (q != null) {
-            Client client = ElasticsearchWrapper.getClient();
+            Client client = ElasticsearchWrapper.getClient(config);
             SearchResponse response = client.prepareSearch()
                     .setQuery(QueryBuilders.queryStringQuery(q))
                     .execute()
@@ -78,13 +80,13 @@ public class RestApiController {
 
     @RequestMapping("/get")
     public Map<String, Object> get() {
-        Client client = ElasticsearchWrapper.getClient();
+        Client client = ElasticsearchWrapper.getClient(config);
         return client.prepareGet("index", "type", "1").execute().actionGet().getSourceAsMap();
     }
 
     @RequestMapping("/put")
     public String put() {
-        Client client = ElasticsearchWrapper.getClient();
+        Client client = ElasticsearchWrapper.getClient(config);
         try {
 
             IndexRequest indexRequest = new IndexRequest("index", "type", "1")

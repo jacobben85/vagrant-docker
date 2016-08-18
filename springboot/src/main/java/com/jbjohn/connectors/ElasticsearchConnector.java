@@ -22,8 +22,8 @@ public final class ElasticsearchConnector {
      */
     public Client create() throws Exception {
         // Pull values from the Tomcat Context XML.
-        String cluster = "elasticsearch_jacobbennyjohn";
-        String server = "localhost";
+        String cluster = "elasticsearch";
+        String server = "192.168.56.102";
         Integer port = 9300;
         String timeout = null;
         Boolean enableCompression = false;

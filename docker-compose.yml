@@ -28,7 +28,6 @@ db:
   environment:
     POSTGRES_PASSWORD: docker
     POSTGRES_USER: docker
-    
 app:
   image: tutum/hello-world
   ports:

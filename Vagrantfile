@@ -16,7 +16,7 @@ Vagrant.configure("2") do |config|
     v.cpus = 2
   end
   
-  port1 = 80
+  port1 = 8080
   port2 = 9200
 
   config.vm.network(:forwarded_port, guest: port1, host: port1)

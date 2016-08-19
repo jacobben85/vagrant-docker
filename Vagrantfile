@@ -31,5 +31,7 @@ Vagrant.configure("2") do |config|
 	project_name: "jacob_infra",
 	run: "always"
 
-  config.vm.provision :shell, path: "bootstrap.sh"
+  config.vm.provision :shell,
+    path: "bootstrap.sh",
+    run: "always"
 end

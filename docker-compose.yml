@@ -5,9 +5,16 @@ elasticsearch:
   ports: 
     - "9200:9200"
     - "9300:9300"
-spring-boot: 
+spring-boot:
   build: https://github.com/jacobben85/spring-boot-jboss.git
   environment:
     config.eshost: 192.168.56.102
-  ports: 
+  ports:
     - "8080:8080"
+dockerui:
+  image: "abh1nav/dockerui"
+  privileged: true
+  volumes:
+   - /var/run/docker.sock:/var/run/docker.sock
+  ports:
+   - "9000:9000"

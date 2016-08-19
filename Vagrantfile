@@ -18,9 +18,11 @@ Vagrant.configure("2") do |config|
   
   port1 = 8080
   port2 = 9200
+  port3 = 9000
 
   config.vm.network(:forwarded_port, guest: port1, host: port1)
   config.vm.network(:forwarded_port, guest: port2, host: port2)
+  config.vm.network(:forwarded_port, guest: port3, host: port3)
 
   config.vm.provision :docker
   config.vm.provision :docker_compose, 

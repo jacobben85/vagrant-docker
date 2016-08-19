@@ -17,4 +17,4 @@ dockerui:
   volumes:
    - /var/run/docker.sock:/var/run/docker.sock
   ports:
-   - "9000:9000"
+   - "80:9000"

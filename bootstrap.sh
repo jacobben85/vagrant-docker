@@ -14,7 +14,7 @@
 #update-rc.d elasticsearch defaults 95 10
 #/etc/init.d/elasticsearch start
 
-sleep 5
+apt-get update
 
 echo "Adding 2 indexes to Elasticsearch"
 

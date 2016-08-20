@@ -4,6 +4,7 @@ echo "Prepping shell scripts"
 
 apt-get --assume-yes update -qq
 apt-get --assume-yes install jq -qq
+apt-get --assume-yes install postgres-xc-client -qq
 
 echo "Adding Indexes to Elasticsearch"
 

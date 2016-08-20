@@ -9,8 +9,11 @@ spring-boot:
   build: https://github.com/jacobben85/spring-boot-jboss.git
   environment:
     config.eshost: 192.168.56.102
+    spring.datasource.url: jdbc:postgresql://192.168.56.102:5432/docker
   ports:
     - "8080:8080"
+  links:
+    - db
 dockerui:
   image: "abh1nav/dockerui"
   privileged: true
@@ -21,7 +24,8 @@ dockerui:
 db:
   image: postgres
   environment:
-    POSTGRES_PASSWORD: docker
+    POSTGRES_DB: docker
     POSTGRES_USER: docker
+    POSTGRES_PASSWORD: docker
   ports:
    - "5432:5432"

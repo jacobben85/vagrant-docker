@@ -1,0 +1,9 @@
+{
+  "Sample":[
+    {"PartNumber":"1","PartName":"Part one","InstanceId(XXXXX)":"Instance 1","Program":"program 1","Ymin":"1","Xmin":"1","Xmin(true)":"1","Xmax(true)":"1","Xmax":"1","Ymax":"1","Zmax":"1","Zmin":"1","InstancePinTxt":{"IPT_1":"1","IPT_0":"1","IPT_3":"1","IPT_2":"1"},"Position":{"L1":"1"},"PartDescription":"part description","Parts":{}},
+    {"PartNumber":"2","PartName":"Part two","InstanceId(XXXXX)":"Instance 2","Program":"program 2","Ymin":"1","Xmin":"1","Xmin(true)":"1","Xmax(true)":"1","Xmax":"1","Ymax":"1","Zmax":"1","Zmin":"1","InstancePinTxt":{"IPT_1":"1","IPT_0":"1","IPT_3":"1","IPT_2":"1"},"Position":{"L1":"1"},"PartDescription":"part description","Parts":{}},
+    {"PartNumber":"3","PartName":"Part three","InstanceId(XXXXX)":"Instance 3","Program":"program 3","Ymin":"1","Xmin":"1","Xmin(true)":"1","Xmax(true)":"1","Xmax":"1","Ymax":"1","Zmax":"1","Zmin":"1","InstancePinTxt":{"IPT_1":"1","IPT_0":"1","IPT_3":"1","IPT_2":"1"},"Position":{"L1":"1"},"PartDescription":"part description","Parts":{}},
+    {"PartNumber":"4","PartName":"Part four","InstanceId(XXXXX)":"Instance 4","Program":"program 4","Ymin":"1","Xmin":"1","Xmin(true)":"1","Xmax(true)":"1","Xmax":"1","Ymax":"1","Zmax":"1","Zmin":"1","InstancePinTxt":{"IPT_1":"1","IPT_0":"1","IPT_3":"1","IPT_2":"1"},"Position":{"L1":"1"},"PartDescription":"part description","Parts":{}},
+    {"PartNumber":"5","PartName":"Part five","InstanceId(XXXXX)":"Instance 5","Program":"program 5","Ymin":"1","Xmin":"1","Xmin(true)":"1","Xmax(true)":"1","Xmax":"1","Ymax":"1","Zmax":"1","Zmin":"1","InstancePinTxt":{"IPT_1":"1","IPT_0":"1","IPT_3":"1","IPT_2":"1"},"Position":{"L1":"1"},"PartDescription":"part description","Parts":{}}
+  ]
+}

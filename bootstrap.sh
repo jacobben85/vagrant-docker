@@ -9,7 +9,7 @@ apt-get --assume-yes install postgres-xc-client -qq
 echo "Adding Indexes to Elasticsearch"
 
 COUNTER=0
-CURLURL="http://127.0.0.1:9200/boeing/part"
+CURLURL="http://127.0.0.1:9200/test/part"
 COUNT=$(less /vagrant/parts.json | jq '.Parts | length')
 while [  $COUNTER -lt $COUNT ]; do
   CURLDATA=$(less /vagrant/parts.json | jq '.Parts['$COUNTER']')

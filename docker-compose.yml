@@ -11,26 +11,8 @@ spring-boot:
     config.eshost: 192.168.56.102
   ports: 
     - "8080:8080"
-#mysqldb: 
-#  container_name: db
-#  environment: 
-#    MYSQL_DATABASE: sample
-#    MYSQL_PASSWORD: mysql
-#    MYSQL_ROOT_PASSWORD: supersecret
-#    MYSQL_USER: mysql
-#  image: "mysql:latest"
-#mywildfly: 
-#  environment: 
-#    - "MYSQL_URI=db:3306"
-#  image: arungupta/wildfly-mysql-javaee7
-#  ports: 
-#    - "8080:8080"
 db:
   image: postgres
   environment:
     POSTGRES_PASSWORD: docker
     POSTGRES_USER: docker
-app:
-  image: tutum/hello-world
-  ports:
-    - "80:80"

@@ -7,14 +7,23 @@ unless Vagrant.has_plugin?("vagrant-docker-compose")
   exit
 end
 
+unless Vagrant.has_plugin?("vagrant-proxyconf")
+  system("vagrant plugin install ./scripts/vagrant-proxyconf-1.5.2.gem")
+  puts "Dependencies installed, please try the command again."
+  exit
+end
+
 Vagrant.configure("2") do |config|
   config.vm.box = "ubuntu/trusty64"
   config.vm.network "private_network", ip: "192.168.56.102"
+  config.vm.box_check_update = false
   
   config.vm.provider "virtualbox" do |v|
-    v.memory = 1536
-    v.cpus = 2
+    v.memory = 5120
+    v.cpus = 3
   end
+
+
   
   port1 = 8080
   port2 = 9200

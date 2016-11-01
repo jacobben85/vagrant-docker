@@ -1,0 +1,12 @@
+<settings>
+    <proxies>
+        <proxy>
+            <id>www-only-ewa-proxy</id>
+            <active>false</active>
+            <protocol>http</protocol>
+            <host>www-only-ewa-proxy.web.boeing.com</host>
+            <port>31061</port>
+            <nonProxyHosts>*.boeing.com</nonProxyHosts>
+        </proxy>
+    </proxies>
+</settings>

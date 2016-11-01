@@ -23,7 +23,11 @@ Vagrant.configure("2") do |config|
     v.cpus = 3
   end
 
-
+  if Vagrant.has_plugin?("vagrant-proxyconf")
+    config.proxy.http = "http://www-only-ewa-proxy.web.boeing.com:31061/"
+    config.proxy.https = "http://www-only-ewa-proxy.web.boeing.com:31061/"
+    config.proxy.no_proxy = "localhost,127.0.0.1,192.168.56.102"
+  end
   
   port1 = 8080
   port2 = 9200
@@ -33,7 +37,8 @@ Vagrant.configure("2") do |config|
   config.vm.network(:forwarded_port, guest: port2, host: port2)
   config.vm.network(:forwarded_port, guest: port3, host: port3)
 
-#  config.vm.provision :shell, inline: "apt-get update"
+  config.vm.provision "shell",
+    path: "bootstrap.sh"
   config.vm.provision :docker
   config.vm.provision :docker_compose, 
 	yml: ["/vagrant/docker-compose.yml"], 

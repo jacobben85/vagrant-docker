@@ -1,15 +1,19 @@
 #!/usr/bin/env bash
 
-echo "Installing htop"
-apt-get install -y htop
-
-echo "Installing java"
+echo "Installing Java 8"
+apt-get --assume-yes update
+apt-get install -y python-software-properties debconf-utils
 add-apt-repository ppa:webupd8team/java -y
-apt-get update -y
-apt-get install oracle-java8-installer -y
+apt-get --assume-yes update
+echo "oracle-java8-installer shared/accepted-oracle-license-v1-1 select true" | sudo debconf-set-selections
+apt-get install -y oracle-java8-installer
+apt-get install -y oracle-java8-set-default
 
-echo "Installing elasticsearch"
-wget https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-2.3.0.deb
-dpkg -i elasticsearch-2.3.0.deb
-update-rc.d elasticsearch defaults 95 10
-/etc/init.d/elasticsearch start
+apt-get --assume-yes update
+apt-get install -y htop
+apt-get install -y maven
+apt-get install -y nmap
+
+mkdir -p /home/vagrant/.m2
+cp /vagrant/scripts/settings.xml /home/vagrant/.m2/settings.xml
+chown -R vagrant:vagrant /home/vagrant/.m2

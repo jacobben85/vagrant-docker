@@ -13,6 +13,7 @@ apt-get --assume-yes update
 apt-get install -y htop
 apt-get install -y maven
 apt-get install -y nmap
+apt-get install -y jq
 
 #mkdir -p /home/vagrant/.m2
 #cp /vagrant/scripts/settings.xml /home/vagrant/.m2/settings.xml

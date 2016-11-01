@@ -1,7 +1,7 @@
 --- 
 elasticsearch: 
   command: "elasticsearch -Des.network.host=0.0.0.0"
-  image: "elasticsearch:latest"
+  image: "elasticsearch:2.4.1"
   ports: 
     - "9200:9200"
     - "9300:9300"

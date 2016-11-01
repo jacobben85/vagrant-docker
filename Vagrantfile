@@ -28,6 +28,5 @@ Vagrant.configure("2") do |config|
   config.vm.provision :docker_compose, 
 	yml: ["/vagrant/docker-compose.yml"], 
 	rebuild: true, 
-	project_name: "jacob_infra",
-	run: "always"
+	project_name: "jacob_infra"
 end

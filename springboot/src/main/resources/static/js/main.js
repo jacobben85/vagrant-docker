@@ -2,10 +2,10 @@ var routerApp = angular.module('routerApp', ['ui.router']);
 
 routerApp.config(function($stateProvider, $urlRouterProvider) {
     console.log("in router config")
-    $urlRouterProvider.otherwise('/');
+    $urlRouterProvider.otherwise('/home');
     $stateProvider
-    .state('', {
-        url: '/',
+    .state('home', {
+        url: '/home',
         templateUrl: '/assets/three.html',
         controller: function($scope) {
             console.log("controller default")

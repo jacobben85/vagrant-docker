@@ -18,4 +18,9 @@ public class DisplayController {
     String search() {
         return "search";
     }
+
+    @RequestMapping(value = "/{[path:[^\\.]*}")
+    public String redirect() {
+        return "forward:/";
+    }
 }

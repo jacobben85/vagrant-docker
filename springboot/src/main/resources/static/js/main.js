@@ -9,7 +9,7 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
         templateUrl: '/assets/three.html',
         controller: function($scope) {
             console.log("controller default")
-            load("test");
+            load("teapot");
         }
     })
     .state('about', {
@@ -19,13 +19,13 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
             'columnOne@about': {
                 templateUrl: 'three.html',
                 controller: function($scope) {
-                    load("test");
+                    load("teapot");
                 }
             },
             'columnTwo@about': {
                 templateUrl: 'three.html',
                 controller: function($scope) {
-                    load("test");
+                    load("teapot");
                 }
             }
         }

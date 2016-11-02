@@ -10,13 +10,37 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
 
 home_loader = function(filename) {
     return ({
-               url: '/home',
-               templateUrl: '/assets/three.html',
-               controller: function($scope) {
-                   console.log("controller default")
-                   load(filename);
-               }
-           });
+        url: '/home',
+        templateUrl: '/assets/three.html',
+        controller: home_controller
+    });
+}
+
+home_controller = function($scope, $http) {
+    console.log("controller default")
+    //load(filename);
+    $scope.search = function() {
+        $http.get('/assets/sample.json').success(function(data) {
+            try {
+                if (data.count > 0) {
+                    $scope.events = data.results;
+                    setTimeout(function() {loadImage(data.results)}, 1000);
+                } else {
+                    $scope.events = [];
+                }
+            } catch(err) {
+                console.log(err);
+            }
+        })
+    }
+    $scope.search();
+}
+
+loadImage = function(results) {
+    for(var k in results) {
+        console.log(angular.element(document).find("#image_" + results[k].id)[0])
+        load("teapot", angular.element(document).find("#image_" + results[k].id)[0]);
+    }
 }
 
 about = ({
@@ -38,9 +62,9 @@ about = ({
     }
 });
 
-load = function(filename) {
+load = function(filename, element) {
     console.log("load function triggered")
-    var obj = loadFile ('assets/' + filename + '.obj', document.body);
+    var obj = loadFile ('assets/' + filename + '.obj', element);
     obj.addEventListener ('ready', function () {
         // set initial size
         obj.dispatchEvent ({

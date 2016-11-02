@@ -4,32 +4,38 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
     console.log("in router config")
     $urlRouterProvider.otherwise('/home');
     $stateProvider
-    .state('home', {
-        url: '/home',
-        templateUrl: '/assets/three.html',
-        controller: function($scope) {
-            console.log("controller default")
-            load("teapot");
-        }
-    })
-    .state('about', {
-        url: '/about',
-        views: {
-            '': { templateUrl: 'about.html' },
-            'columnOne@about': {
-                templateUrl: 'three.html',
-                controller: function($scope) {
-                    load("teapot");
-                }
-            },
-            'columnTwo@about': {
-                templateUrl: 'three.html',
-                controller: function($scope) {
-                    load("teapot");
-                }
+    .state('home', home_loader("teapot"))
+    .state('about', about);
+});
+
+home_loader = function(filename) {
+    return ({
+               url: '/home',
+               templateUrl: '/assets/three.html',
+               controller: function($scope) {
+                   console.log("controller default")
+                   load(filename);
+               }
+           });
+}
+
+about = ({
+    url: '/about',
+    views: {
+        '': { templateUrl: 'about.html' },
+        'columnOne@about': {
+            templateUrl: 'three.html',
+            controller: function($scope) {
+                load("teapot");
+            }
+        },
+        'columnTwo@about': {
+            templateUrl: 'three.html',
+            controller: function($scope) {
+                load("teapot");
             }
         }
-    });
+    }
 });
 
 load = function(filename) {
